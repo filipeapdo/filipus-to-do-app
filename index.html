@@ -8,6 +8,12 @@
   </head>
   <body>
     <h1>FILIPUS To Do App</h1>
-    <div id="todo-list">Loading tasks...</div>
+
+    <form hx-post="/add-task" hx-target="#todo-list">
+      <input type="text" name="title" required />
+      <button type="submit">Add Task</button>
+    </form>
+
+    <div id="todo-list" hx-get="/tasks" hx-trigger="load">Loading tasks...</div>
   </body>
 </html>
