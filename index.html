@@ -9,12 +9,12 @@
   <body>
     <h1>FILIPUS To Do App</h1>
 
-    <form hx-post="/add-task" hx-target="#todo-list">
+    <form hx-post="/api/add-task" hx-target="#todo-list">
       <input type="text" name="title" required />
       <button type="submit">Add Task</button>
     </form>
 
-    <div id="todo-list" hx-get="/api/tasks" hx-trigger="load">
+    <div id="todo-list" hx-get="/api/get-tasks" hx-trigger="load">
       Loading tasks...
     </div>
   </body>
