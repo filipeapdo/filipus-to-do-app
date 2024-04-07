@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 
 	handler "github.com/filipeapdo/filipus-to-do-app/api"
 )
@@ -27,6 +28,11 @@ func main() {
 
 	http.HandleFunc("/api/del-task", handler.DelTask)
 
-	log.Println("Starting server on :8888")
-	log.Fatal(http.ListenAndServe(":8888", nil))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8888"
+	}
+
+	log.Printf("Starting server on %v\n", port)
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, nil))
 }
