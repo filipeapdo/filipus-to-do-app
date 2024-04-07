@@ -29,7 +29,7 @@ func main() {
 	log.Println("FILIPUS To Do App")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tmpl, err := template.ParseFiles("index.html")
+		tmpl, err := template.ParseFiles("../index.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -38,7 +38,7 @@ func main() {
 	})
 
 	http.HandleFunc("/tasks", func(w http.ResponseWriter, r *http.Request) {
-		tmpl, err := template.ParseFiles("tasks.html")
+		tmpl, err := template.ParseFiles("../tasks.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
