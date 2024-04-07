@@ -17,7 +17,7 @@ var tasks = []Task{
 }
 
 func Tasks(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("api/tasks_view.html")
+	tmpl, err := template.ParseFiles("tasks_view.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
