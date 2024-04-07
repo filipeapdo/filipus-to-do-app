@@ -2,6 +2,7 @@ package handler
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -17,6 +18,7 @@ var tasks = []Task{
 }
 
 const tmplTasks = `
+{{range .}}
 <div>
   <span>{{.ID}} - {{.Title}}</span>
   <form
@@ -28,9 +30,11 @@ const tmplTasks = `
     <button type="submit">Delete</button>
   </form>
 </div>
+{{end}}
 `
 
 func Tasks(w http.ResponseWriter, r *http.Request) {
+	log.Println("from /api/taks...")
 	tmpl, err := template.New("tasks").Parse(tmplTasks)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

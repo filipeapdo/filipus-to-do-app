@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"slices"
 	"strconv"
+
+	handler "github.com/filipeapdo/filipus-to-do-app/api"
 )
 
 type Task struct {
@@ -45,6 +47,8 @@ func main() {
 		}
 		tmpl.Execute(w, tasks)
 	})
+
+	http.HandleFunc("/api/tasks", handler.Tasks)
 
 	http.HandleFunc("/add-task", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
